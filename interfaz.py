@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
+from movies import Movies
 import csv
 import re
 # PANTALLA INICIAL DEL PROGRAMA 
@@ -10,6 +11,7 @@ ventana_principal.geometry("380x320+500+130")
 nom_curso = Label(ventana_principal, text="Nombre del curso: Lenguajes Formales y de Programación B-").grid(row=1, column=1, pady=7, columnspan=5, ipadx=30)
 nom_est = Label(ventana_principal, text="Nombre del estudiante: Josué Daniel Chavez Portillo").grid(row=2, column=1, pady=7, columnspan=3, ipadx=30)
 carnet = Label(ventana_principal, text="Carnet del estudiante: 202100033").grid(row=3, column=1, pady=7, ipadx=7)
+contenedor_movies,uni,unicos = [],[],[]
 arch = StringVar()
 
 #VENTANA PARA CARGAR ARCHIVO
@@ -32,10 +34,33 @@ def seleccionar_archivo():
                 arch.set("")
                 msg = 0
                 for linea in lector:
-                    pass
+                    try:
+                        titulo,actor1,actor2,actor3,anio,genero = linea[0],linea[1],linea[2],linea[3],int(linea[4]),linea[5]
+                        info = Movies(titulo,actor1,actor2,actor3,anio,genero)
+                    except: mensaje_espacio = messagebox.showerror(title="Mensaje de Alerta", message="El Año debe ser un valor numerico por ende la Pelicula: " + titulo + " no se ha agregado")
+                    if anio <=2023:
+                        contenedor_movies.append(info)                
+                        print('agregada')
+                        msg = 0
+                    else:
+                        mensaje_estat = messagebox.showerror(title="Mensaje de Alerta", message="El Año esta fuera de rango por lo tanto la pelicula no se ha agregado")
+                if msg == 0:
+                    mensaje_exito = messagebox.showinfo(title="Mensaje de notificación", message="La carga de archivos ha sido satisfactoria")
+                print(len(contenedor_movies))
+                count = 0
+                for i in contenedor_movies:
+                    tit = contenedor_movies[count].get_titulo()
+                    uni.append(tit)
+                    count += 1
+                print(len(contenedor_movies))
+                archivo_csv.close() 
         except FileNotFoundError:     
             arch_no_encontrado = messagebox.showerror(title="Mensaje de Error", message="No se ha encontrado la ruta del archivo ingresado")                    
             arch.set("")
+    label_ruta = Label(ventana_cargar, text="Ruta").place(x=80, y =40) 
+    archivo_ruta = Entry(ventana_cargar, textvariable=arch, width=30).place(x=150, y =40)
+    btn_seleccionar = Button(ventana_cargar, text="Seleccionar", command=Cargar_archivo).place(x=160, y =120)
+    btn_regresar = Button(ventana_cargar, text="Regresar", command=regresar).place(x=280, y=120) 
 
 
 def salir_programa():
