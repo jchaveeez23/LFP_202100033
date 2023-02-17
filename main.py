@@ -1,6 +1,12 @@
 from movies import leerarchivo
+from movies import MostrarPelicula
+from movies import MostrarActores
+from movies import filtrar_por_actor
+from movies import filtrar_por_anio
+from movies import filtrar_por_genero
 
 ListaMovies = []
+lista_peliculas = []
 
 print('---------------------------------------')
 print('LENGUAJES FORMALES Y DE PROGRAMACION B-')
@@ -31,15 +37,41 @@ while op != 5:
         print('----------------CARGA DE ARCHIVOS---------------')
         leerarchivo(ListaMovies)
         print("CARGO EXITOSAMENTE\n")
-        for i in ListaMovies:
-            i.printearInfo()
         input()
     elif op == 2:
         # GESTION
-        print("GESTION")
+         print('----------------GESTIÓN---------------')
+         print('1. Mostrar Peliculas')
+         print('2. Mostrar Actores')
+         opcion = input("Seleccione una opción:")
+         if opcion == "1":
+            MostrarPelicula()
+            input()
+         elif opcion == "2":
+            MostrarActores()
+            input()
+         else:
+            print("Opción inválida.")
+            input()
     elif op == 3:
         # FILTRO
-        print("FILTRO")
+        print('----------------FILTRO---------------')
+        print('1. Filtrar por Actor')
+        print('2. Filtrar Por Año')
+        print('3. Filtrar Por Genero')
+        opcion = input("Seleccione una opción:")
+        if opcion == "1":
+            filtrar_por_actor()
+            input()
+        elif opcion == "2":
+            filtrar_por_anio()
+            input()
+        elif opcion == '3':
+            filtrar_por_genero()
+            input()
+        else:
+            print("Opción inválida.")
+            input()
     elif op == 4:
         # GRAFICO
         print("GRAFICO")
