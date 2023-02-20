@@ -1,3 +1,4 @@
+
 class Movies():
     #Constructor
     def __init__(self,titulo,actores,anio,genero):
@@ -26,7 +27,7 @@ def leerarchivo(lista):
         # Almacenar los campos en variables separadas
         nombre = campos[0]
         actores = campos[1].split(',')
-        año = int(campos[2])
+        año = (campos[2])
         genero = [campos[3]]
         # Crear un diccionario para almacenar los datos de la película
         pelicula = {
@@ -62,22 +63,20 @@ def MostrarActores():
     for actor in pelicula_seleccionada['actores']:
         print(actor)
 
-def filtrar_por_actor(actor, ListaMovies):
+def filtrar_por_actor(actor):
     for pelicula in ListaMovies:
-        if actor in pelicula['Actores']:
-           ListaMovies.append(pelicula)
-    return ListaMovies
+        if actor in pelicula['actores']:
+            print(pelicula['nombre'])
 
-def filtrar_por_anio(anio, lista_peliculas):
-    peliculas_filtradas = []
-    for pelicula in lista_peliculas:
-        if pelicula['Año'] == anio:
-            peliculas_filtradas.append({'Nombre': pelicula['Nombre'], 'Género': pelicula['Género'][0]})
-    return peliculas_filtradas
+def filtrar_por_anio(año):
+   for pelicula in ListaMovies:
+        if año in pelicula['año']:
+            print(pelicula['nombre'],pelicula['genero'])
 
-def filtrar_por_genero(genero, lista_peliculas):
-    peliculas_filtradas = []
-    for pelicula in lista_peliculas:
-        if genero in pelicula['Género']:
-            peliculas_filtradas.append(pelicula)
-    return peliculas_filtradas
+def filtrar_por_genero(genero):
+    for pelicula in ListaMovies:
+        if genero in pelicula['genero']:
+            print(pelicula['nombre'],pelicula['año'])
+
+def graficar():
+    pass

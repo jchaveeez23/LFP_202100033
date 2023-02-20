@@ -6,7 +6,6 @@ from movies import filtrar_por_anio
 from movies import filtrar_por_genero
 
 ListaMovies = []
-lista_peliculas = []
 
 print('---------------------------------------')
 print('LENGUAJES FORMALES Y DE PROGRAMACION B-')
@@ -61,13 +60,16 @@ while op != 5:
         print('3. Filtrar Por Genero')
         opcion = input("Seleccione una opción:")
         if opcion == "1":
-            filtrar_por_actor()
+            serch  = input('Ingrese el actor a buscar: ')
+            filtrar_por_actor(serch)
             input()
         elif opcion == "2":
-            filtrar_por_anio()
+            serch  = input('Ingrese el años de lanzamiento a buscar: ')
+            filtrar_por_anio(serch)
             input()
         elif opcion == '3':
-            filtrar_por_genero()
+            serch  = input('Ingrese el genero a buscar: ')
+            filtrar_por_genero(serch)
             input()
         else:
             print("Opción inválida.")
