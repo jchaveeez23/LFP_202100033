@@ -4,6 +4,7 @@ from movies import MostrarActores
 from movies import filtrar_por_actor
 from movies import filtrar_por_anio
 from movies import filtrar_por_genero
+from movies import graficar
 
 ListaMovies = []
 
@@ -29,55 +30,70 @@ while op != 5:
     print("4 Grafico")
     print("5 Salir")
     print('---------------------------------------')
-    print("1Elija una opcion de 1 a 5:")
+    print("Elija una opcion de 1 a 5:")
     op = int(input())
     if op == 1:
         # CARGA DE ARCHIVOS
         print('----------------CARGA DE ARCHIVOS---------------')
         leerarchivo(ListaMovies)
-        print("CARGO EXITOSAMENTE\n")
+        print('')
+        print('---------------------------------------')
+        print("ARCHIVO CARGADO EXITOSAMENTE\n")
         input()
     elif op == 2:
         # GESTION
          print('----------------GESTIÓN---------------')
+         print('')
          print('1. Mostrar Peliculas')
          print('2. Mostrar Actores')
          opcion = input("Seleccione una opción:")
+         print('')
          if opcion == "1":
             MostrarPelicula()
+            print('Presione enter para continuar...')
             input()
          elif opcion == "2":
             MostrarActores()
+            print('Presione enter para continuar...')
             input()
          else:
             print("Opción inválida.")
+            print('Presione enter para continuar...')
             input()
     elif op == 3:
         # FILTRO
         print('----------------FILTRO---------------')
+        print('')
         print('1. Filtrar por Actor')
         print('2. Filtrar Por Año')
         print('3. Filtrar Por Genero')
         opcion = input("Seleccione una opción:")
+        print('')
         if opcion == "1":
             serch  = input('Ingrese el actor a buscar: ')
             filtrar_por_actor(serch)
+            print('Presione enter para continuar...')
             input()
         elif opcion == "2":
             serch  = input('Ingrese el años de lanzamiento a buscar: ')
             filtrar_por_anio(serch)
+            print('Presione enter para continuar...')
             input()
         elif opcion == '3':
             serch  = input('Ingrese el genero a buscar: ')
             filtrar_por_genero(serch)
+            print('Presione enter para continuar...')
             input()
         else:
             print("Opción inválida.")
+            print('Presione enter para continuar...')
             input()
     elif op == 4:
         # GRAFICO
-        print("GRAFICO")
-        pass
+        print("GRAFICO REALIZADO!")
+        graficar()
+        print('Presione enter para continuar...')
+        input()        
     elif op == 5:
         # SALIDA
         print("GRACIAS POR PREFERIRNOS!, HASTA LUEGO...")

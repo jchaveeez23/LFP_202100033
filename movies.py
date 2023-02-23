@@ -1,4 +1,5 @@
-
+import graphviz
+import random
 class Movies():
     #Constructor
     def __init__(self,titulo,actores,anio,genero):
@@ -79,4 +80,53 @@ def filtrar_por_genero(genero):
             print(pelicula['nombre'],pelicula['año'])
 
 def graficar():
-    pass
+    # Crear el grafo
+    graph = graphviz.Digraph()
+
+    # Agregar los nodos y aristas
+    graph.node('The Avengers', shape='hexagon', style='filled', fillcolor='lightblue')
+    graph.node('Año 2012', shape='pentagon', style='filled', fillcolor='pink')
+    graph.node('Año 2014', shape='pentagon', style='filled', fillcolor='pink')
+    graph.node('Año 2018', shape='pentagon', style='filled', fillcolor='pink')
+    graph.node('Año 2002', shape='pentagon', style='filled', fillcolor='pink')
+    graph.node('Año 2017', shape='pentagon', style='filled', fillcolor='pink')
+    graph.edge('The Avengers','Robert Downey Jr',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('The Avengers', 'Chris Evans',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('The Avengers', 'Chris Hemsworth',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Año 2012', 'The Avengers',color=random.choice(['red', 'orange', 'blue']))
+    graph.node('Spiderman', shape='hexagon', style='filled', fillcolor='lightblue')
+    graph.edge('Spiderman', 'Tobey Maguire',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Spiderman', 'Kirsten Dunst',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Spiderman', 'Willem Dafoe',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Año 2002', 'Spiderman',color=random.choice(['red', 'orange', 'blue']))
+    graph.node('The Amazing Spiderman', shape='hexagon', style='filled', fillcolor='lightblue')
+    graph.edge('The Amazing Spiderman', 'Andrew Garfield',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('The Amazing Spiderman', 'Emma Stone',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Año 2012', 'The Amazing Spiderman',color=random.choice(['red', 'orange', 'blue']))
+    graph.node('The Amazing Spiderman 2', shape='hexagon', style='filled', fillcolor='lightblue')
+    graph.edge('The Amazing Spiderman 2', 'Andrew Garfield',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('The Amazing Spiderman 2', 'Emma Stone',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Año 2014', 'The Amazing Spiderman 2',color=random.choice(['red', 'orange', 'blue']))
+    graph.node('Spiderman Homecoming', shape='hexagon', style='filled', fillcolor='lightblue')
+    graph.edge('Spiderman Homecoming', 'Tom Holland',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Spiderman Homecoming', 'Zendaya',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Año 2017', 'Spiderman Homecoming',color=random.choice(['red', 'orange', 'blue']))
+    graph.node('Avengers Infinity War', shape='hexagon', style='filled', fillcolor='lightblue')
+    graph.edge('Avengers Infinity War', 'Robert Downey Jr',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Avengers Infinity War', 'Tom Holland',color=random.choice(['red', 'orange', 'blue']))
+    graph.edge('Año 2018', 'Avengers Infinity War',color=random.choice(['red', 'orange', 'blue']))
+
+    # Establecer los atributos del grafo
+    graph.attr('graph')
+    graph.attr('node', shape='rectangle')
+    graph.attr('edge', dir='none')
+
+    # Generar el archivo PDF
+    graph.render('grafo', format='pdf')
+    graph.view()
+
+
+
+
+
+

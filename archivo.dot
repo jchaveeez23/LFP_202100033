@@ -1,0 +1,70 @@
+digraph peliculas {
+  // subgrafo para las películas
+  subgraph pelicula {
+    label="Películas"
+    TheAvengers [label="The Avengers"]
+    Spiderman [label="Spiderman"]
+    TheAmazingSpiderman [label="The Amazing Spiderman"]
+    TheAmazingSpiderman2 [label="The Amazing Spiderman 2"]
+    SpidermanHomecoming [label="Spiderman Homecoming"]
+    AvengersInfinityWar [label="Avengers Infinity War"]
+  }
+
+  // subgrafo para los actores
+  subgraph actores {
+    label="Actores"
+    RobertDowneyJr
+    ChrisEvans
+    ChrisHemsworth
+    TobeyMaguire
+    KirstenDunst
+    WillemDafoe
+    AndrewGarfield
+    EmmaStone
+    TomHolland
+    Zendaya
+  }
+
+  // subgrafo para los años
+  subgraph año {
+    label="Años"
+    2012
+    2002
+    2014
+    2017
+    2018
+  }
+
+  // subgrafo para los géneros
+  subgraph genero {
+    label="Géneros"
+    Ficción
+    Acción
+  }
+
+  // relaciones entre los subgrafos
+  TheAvengers -> Ficción
+  Spiderman -> Acción
+  TheAmazingSpiderman -> Acción
+  TheAmazingSpiderman2 -> Acción
+  SpidermanHomecoming -> Acción
+  AvengersInfinityWar -> Acción
+
+  TheAvengers -> 2012
+  Spiderman -> 2002
+  TheAmazingSpiderman -> 2012
+  TheAmazingSpiderman2 -> 2014
+  SpidermanHomecoming -> 2017
+  AvengersInfinityWar -> 2018
+
+  RobertDowneyJr -> TheAvengers
+  ChrisEvans -> TheAvengers
+  ChrisHemsworth -> TheAvengers
+  TobeyMaguire -> Spiderman
+  KirstenDunst -> Spiderman
+  WillemDafoe -> Spiderman
+  AndrewGarfield -> TheAmazingSpiderman -> TheAmazingSpiderman2
+  EmmaStone -> TheAmazingSpiderman -> TheAmazingSpiderman2
+  TomHolland -> SpidermanHomecoming -> AvengersInfinityWar
+  Zendaya -> SpidermanHomecoming
+}
